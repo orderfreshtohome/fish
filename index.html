@@ -3,83 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elite Coastal Seafood - Premium Ocean Fresh Catches</title>
+    <title>Elite Coastal Seafood</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #ffffff; color: #333; font-family: 'Montserrat', sans-serif; }
-        h1, h2, h5 { font-family: 'Playfair Display', serif; color: #0077be; }
-        .hero { 
-            position: relative;
-            background: linear-gradient(to bottom, #e0f7fa, #ffffff);
-            padding: 150px 0;
-            overflow: hidden;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: url('https://img.freepik.com/free-vector/elegant-blue-water-wave-with-bubbles-background_1035-31032.jpg');
-            background-size: cover;
-            opacity: 0.3;
-            z-index: 0;
-        }
-        .hero-content { position: relative; z-index: 2; }
-        .hero h1 { font-size: 4.5rem; color: #0077be; }
-        .hero p { color: #555; }
-        .waves-container {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 150px;
-            overflow: hidden;
-            z-index: 1;
-        }
-        .wave {
-            position: absolute;
-            bottom: 0;
-            width: 200%;
-            height: 150px;
-            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,0 C300,100 900,0 1200,60 L1200,120 L0,120 Z" fill="%23ffffff" opacity="0.8"/></svg>');
-            background-size: 50% 100%;
-            animation: wave-move 12s linear infinite;
-        }
-        .wave:nth-child(2) {
-            bottom: 10px;
-            opacity: 0.6;
-            animation: wave-move 18s linear infinite reverse;
-        }
-        .wave:nth-child(3) {
-            bottom: 20px;
-            opacity: 0.4;
-            animation: wave-move 24s linear infinite;
-        }
-        @keyframes wave-move {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        .product-card { 
-            background-color: #ffffff; border: 1px solid #e0f7fa; border-radius: 15px; 
-            box-shadow: 0 10px 30px rgba(0,119,190,0.1); transition: all 0.4s;
-        }
-        .product-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,119,190,0.2); }
-        .product-card img { height: 300px; object-fit: cover; border-bottom: 1px solid #e0f7fa; }
-        .ocean-btn { background-color: #0077be; color: white; border: none; }
-        .ocean-btn:hover { background-color: #005f9e; }
-        .whatsapp-btn { background-color: #25D366; color: white; }
-        .whatsapp-btn:hover { background-color: #128C7E; }
-        .whatsapp-btn.disabled { background-color: #aaa; cursor: not-allowed; opacity: 0.6; }
-        .modal-content { background-color: #ffffff; border: 1px solid #e0f7fa; }
-        .floating-cart { background-color: #0077be; color: white; }
-        .form-control, .form-select { border-color: #40c4ff; }
-        .price-display { color: #0077be; font-size: 1.3rem; font-weight: bold; }
+        body { background:#fff; color:#333; font-family:'Montserrat',sans-serif; }
+        h1,h2,h5 { font-family:'Playfair Display',serif; color:#0077be; }
+        .hero { position:relative; background:linear-gradient(to bottom,#e0f7fa,#fff); padding:150px 0; overflow:hidden; }
+        .hero::before { content:''; position:absolute; inset:0; background:url('https://img.freepik.com/free-vector/elegant-blue-water-wave-with-bubbles-background_1035-31032.jpg') center/cover; opacity:0.3; z-index:0; }
+        .hero-content { position:relative; z-index:2; }
+        .waves-container { position:absolute; bottom:0; width:100%; height:150px; overflow:hidden; z-index:1; }
+        .wave { position:absolute; bottom:0; width:200%; height:150px; background:url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 120' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,0 C300,100 900,0 1200,60 L1200,120 L0,120 Z' fill='%23ffffff' opacity='0.8'/%3E%3C/svg%3E") 50% 100%; animation:wave 12s linear infinite; }
+        .wave:nth-child(2) { bottom:10px; opacity:0.6; animation-duration:18s; animation-direction:reverse; }
+        .wave:nth-child(3) { bottom:20px; opacity:0.4; animation-duration:24s; }
+        @keyframes wave { to { transform:translateX(-50%); } }
+        .product-card { background:#fff; border:1px solid #e0f7fa; border-radius:15px; box-shadow:0 10px 30px rgba(0,119,190,.1); transition:.4s; }
+        .product-card:hover { transform:translateY(-10px); box-shadow:0 20px 40px rgba(0,119,190,.2); }
+        .product-card img { height:300px; object-fit:cover; }
+        .ocean-btn { background:#0077be; color:#fff; }
+        .ocean-btn:hover { background:#005f9e; }
+        .whatsapp-btn { background:#25D366; color:#fff; }
+        .whatsapp-btn:hover { background:#128C7E; }
+        .whatsapp-btn.disabled { background:#aaa; opacity:0.6; cursor:not-allowed; }
+        .floating-cart { background:#0077be; color:#fff; }
+        .price-display { color:#0077be; font-weight:bold; font-size:1.3rem; }
     </style>
 </head>
 <body>
 
-    <!-- Hero Section with Animated Waves -->
     <section class="hero text-center">
         <div class="container hero-content">
             <h1 class="display-3 fw-bold">Elite Coastal Seafood</h1>
@@ -93,7 +45,6 @@
         </div>
     </section>
 
-    <!-- Products Section -->
     <section id="products" class="py-5 bg-light">
         <div class="container">
             <h2 class="text-center mb-5">Today's Ocean-Fresh Selection</h2>
@@ -101,125 +52,172 @@
         </div>
     </section>
 
-    <!-- Cart Modal -->
     <div class="modal fade" id="cartModal" tabindex="-1">
         <div class="modal-dialog modal-lg">
             <div class="modal-content shadow">
                 <div class="modal-header border-0">
-                    <h5 class="modal-title" style="color: #0077be;">Your Ocean Cart <span class="badge bg-primary" id="cart-count">0</span></h5>
+                    <h5 class="modal-title" style="color:#0077be">Your Ocean Cart <span class="badge bg-primary" id="cart-count">0</span></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <div id="cart-items">
-                        <p class="text-muted">Your cart is empty.</p>
-                    </div>
-                    <hr style="border-color: #e0f7fa;">
-                    <h5 style="color: #0077be;">Delivery Details</h5>
-                    <form id="customer-form">
-                        <div class="row g-3">
-                            <div class="col-12"><label class="form-label">Full Name *</label><input type="text" class="form-control" id="customer-name" required></div>
-                            <div class="col-12"><label class="form-label">Mobile Number *</label>
-                                <div class="input-group"><span class="input-group-text">+91</span>
-                                    <input type="tel" class="form-control" id="customer-phone" maxlength="10" pattern="[0-9]{10}" required placeholder="10-digit number">
-                                </div>
-                            </div>
-                            <div class="col-12"><label class="form-label">Place / Landmark *</label><input type="text" class="form-control" id="customer-place" required></div>
-                            <div class="col-12"><label class="form-label">Road / Street *</label><input type="text" class="form-control" id="customer-road" required></div>
-                            <div class="col-12"><label class="form-label">Town / City *</label><input type="text" class="form-control" id="customer-town" required></div>
-                            <div class="col-12"><label class="form-label">Pin Code *</label><input type="text" class="form-control" id="customer-pin" maxlength="6" pattern="[0-9]{6}" required></div>
+                    <div id="cart-items"><p class="text-muted">Your cart is empty.</p></div>
+                    <hr style="border-color:#e0f7fa">
+                    <h5 style="color:#0077be">Delivery Details</h5>
+                    <form id="customer-form" class="row g-3">
+                        <div class="col-12"><label>Full Name *</label><input type="text" class="form-control" id="customer-name" required></div>
+                        <div class="col-12"><label>Mobile Number *</label>
+                            <div class="input-group"><span class="input-group-text">+91</span><input type="tel" class="form-control" id="customer-phone" maxlength="10" pattern="[0-9]{10}" required></div>
                         </div>
+                        <div class="col-12"><label>Place / Landmark *</label><input type="text" class="form-control" id="customer-place" required></div>
+                        <div class="col-12"><label>Road / Street *</label><input type="text" class="form-control" id="customer-road" required></div>
+                        <div class="col-12"><label>Town / City *</label><input type="text" class="form-control" id="customer-town" required></div>
+                        <div class="col-12"><label>Pin Code *</label><input type="text" class="form-control" id="customer-pin" maxlength="6" pattern="[0-9]{6}" required></div>
                     </form>
                 </div>
                 <div class="modal-footer border-0 flex-column">
                     <h5>Total: ₹<span id="cart-total">0</span></h5>
-                    <button class="btn whatsapp-btn btn-lg w-100 mt-3 disabled" id="whatsapp-order"><i class="fab fa-whatsapp"></i> Complete Order on WhatsApp</button>
+                    <button class="btn whatsapp-btn btn-lg w-100 mt-3 disabled" id="whatsapp-order">
+                        <i class="fab fa-whatsapp"></i> Complete Order on WhatsApp
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Floating Cart Button -->
     <button class="btn floating-cart position-fixed bottom-0 end-0 m-4 rounded-circle p-3 shadow-lg" data-bs-toggle="modal" data-bs-target="#cartModal">
         <i class="fas fa-shopping-cart fa-2x"></i>
         <span class="badge bg-danger position-absolute top-0 start-100 translate-middle" id="floating-cart-count">0</span>
     </button>
 
     <script>
-        const WHATSAPP_NUMBER = "+918139001800";
+        const WA_NUMBER = "+918139001800"; // ← Replace with your number
 
         const products = [
-            { id: 1, name: "Premium Whole Lobster", pricePerKg: 3500, img: "https://shop.legalseafoods.com/cdn/shop/files/LiveLobstersCloseupNov24.jpg?v=1731080140&width=1920" },
-            { id: 2, name: "Fresh Oysters", pricePerKg: 5000, img: "https://thumbs.dreamstime.com/b/fresh-oysters-ice-lemon-wedges-premium-seafood-delicacy-served-raw-fine-dining-gourmet-restaurant-experience-405945557.jpg" },
-            { id: 3, name: "King Prawns Jumbo", pricePerKg: 1800, img: "https://www.citarella.com/media/catalog/product/cache/6bd6bc90948058f1c179c773d53c57be/image/154b83a/jumbo-shrimp.jpg" },
-            { id: 4, name: "Black Caviar", pricePerKg: 150000, img: "https://caviar.ca/wp-content/uploads/2023/06/CAVIAR.webp" },
-            { id: 5, name: "Wild Seer Fish Steak", pricePerKg: 1200, img: "https://maplesfood.com/wp-content/uploads/2020/11/GADRE-SEER-2.jpg" },
-            { id: 6, name: "Blue Crab (Live)", pricePerKg: 900, img: "https://cdn.shopify.com/s/files/1/1366/4785/files/CD_1280_e_Rusty_Crabs_MBCE_21623_edited_933a5f8f-0f84-41e2-b9ae-b8fcb0599b40.jpg?v=1761306733" }
+            {id:1,name:"Premium Whole Lobster",pricePerKg:3500,img:"https://shop.legalseafoods.com/cdn/shop/files/LiveLobstersCloseupNov24.jpg?v=1731080140&width=1920"},
+            {id:2,name:"Fresh Oysters",pricePerKg:5000,img:"https://thumbs.dreamstime.com/b/fresh-oysters-ice-lemon-wedges-premium-seafood-delicacy-served-raw-fine-dining-gourmet-restaurant-experience-405945557.jpg"},
+            {id:3,name:"King Prawns Jumbo",pricePerKg:1800,img:"https://www.citarella.com/media/catalog/product/cache/6bd6bc90948058f1c179c773d53c57be/image/154b83a/jumbo-shrimp.jpg"},
+            {id:4,name:"Black Caviar",pricePerKg:150000,img:"https://caviar.ca/wp-content/uploads/2023/06/CAVIAR.webp"},
+            {id:5,name:"Wild Seer Fish Steak",pricePerKg:1200,img:"https://maplesfood.com/wp-content/uploads/2020/11/GADRE-SEER-2.jpg"},
+            {id:6,name:"Blue Crab (Live)",pricePerKg:900,img:"https://cdn.shopify.com/s/files/1/1366/4785/files/CD_1280_e_Rusty_Crabs_MBCE_21623_edited_933a5f8f-0f84-41e2-b9ae-b8fcb0599b40.jpg?v=1761306733"}
         ];
-
-        // Full JavaScript from previous (renderProducts, updatePrice, addToCart, etc.) – identical and working
-        // (Paste the entire script block here – it's the same as last time)
 
         let cart = [];
 
-        function renderProducts() {
-            const grid = document.getElementById('product-grid');
-            grid.innerHTML = '';
-            products.forEach(p => {
-                const col = document.createElement('div');
-                col.className = 'col-md-4 mb-5';
-                col.innerHTML = `
-                    <div class="card product-card h-100">
-                        <img src="${p.img}" class="card-img-top" alt="${p.name}" onerror="this.src='https://via.placeholder.com/300x300?text=Image+Loading...';">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">${p.name}</h5>
-                            <p class="card-text text-muted">₹${p.pricePerKg} per kg</p>
-                            <div class="mt-3">
-                                <select class="form-select mb-2" id="weight-select-${p.id}" onchange="updatePrice(${p.id})">
-                                    <option value="0.25">250gm</option>
-                                    <option value="0.5">500gm</option>
-                                    <option value="1" selected>1kg</option>
-                                    <option value="custom">Custom Quantity</option>
-                                </select>
-                                <input type="number" class="form-control d-none" id="custom-weight-${p.id}" min="0.1" step="0.05" placeholder="e.g. 0.75 for 750gm" oninput="updatePrice(${p.id})">
-                            </div>
-                            <p class="price-display mt-2" id="price-display-${p.id}">₹${p.pricePerKg}</p>
-                            <button class="btn ocean-btn mt-3" onclick="addToCart(${p.id})">Add to Cart</button>
-                        </div>
+        const grid = document.getElementById('product-grid');
+
+        products.forEach(p => {
+            const card = document.createElement('div');
+            card.className = 'col-md-4 mb-5';
+            card.innerHTML = `
+                <div class="card product-card h-100">
+                    <img src="${p.img}" class="card-img-top" alt="${p.name}" onerror="this.src='https://via.placeholder.com/600x400?text=No+Image'">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">${p.name}</h5>
+                        <p class="text-muted">₹${p.pricePerKg} per kg</p>
+                        <select class="form-select mb-2" id="sel-${p.id}">
+                            <option value="0.25">250gm</option>
+                            <option value="0.5">500gm</option>
+                            <option value="1" selected>1kg</option>
+                            <option value="custom">Custom</option>
+                        </select>
+                        <input type="number" class="form-control d-none mb-2" id="cust-${p.id}" min="0.1" step="0.05" placeholder="e.g. 0.75">
+                        <p class="price-display" id="price-${p.id}">₹${p.pricePerKg} for 1kg</p>
+                        <button class="btn ocean-btn mt-auto add-btn" data-id="${p.id}">Add to Cart</button>
                     </div>
-                `;
-                grid.appendChild(col);
+                </div>`;
+            grid.appendChild(card);
 
-                const select = document.getElementById(`weight-select-${p.id}`);
-                select.addEventListener('change', () => {
-                    const customInput = document.getElementById(`custom-weight-${p.id}`);
-                    if (select.value === 'custom') customInput.classList.remove('d-none');
-                    else customInput.classList.add('d-none');
-                    updatePrice(p.id);
-                });
-                updatePrice(p.id);
+            const sel = document.getElementById(`sel-${p.id}`);
+            const cust = document.getElementById(`cust-${p.id}`);
+            const priceEl = document.getElementById(`price-${p.id}`);
+
+            const updatePrice = () => {
+                let w = sel.value === 'custom' ? (parseFloat(cust.value) || 1) : parseFloat(sel.value);
+                const price = Math.round(p.pricePerKg * w * 100) / 100;
+                const label = w===0.25?'250gm':w===0.5?'500gm':w===1?'1kg':`${(w*1000).toFixed(0)}gm`;
+                priceEl.textContent = `₹${price} for ${label}`;
+            };
+
+            sel.onchange = () => {
+                cust.classList.toggle('d-none', sel.value !== 'custom');
+                updatePrice();
+            };
+            cust.oninput = updatePrice;
+            updatePrice();
+        });
+
+        // Fixed: Attach click listeners properly after cards are created
+        document.querySelectorAll('.add-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const id = parseInt(btn.dataset.id);
+                const sel = document.getElementById(`sel-${id}`);
+                const cust = document.getElementById(`cust-${id}`);
+                let weight = sel.value === 'custom' ? parseFloat(cust.value) || 1 : parseFloat(sel.value);
+                if (weight <= 0) return alert('Please select a valid quantity');
+
+                const p = products.find(x => x.id === id);
+                const price = Math.round(p.pricePerKg * weight * 100) / 100;
+                const label = weight===0.25?'250gm':weight===0.5?'500gm':weight===1?'1kg':`${(weight*1000).toFixed(0)}gm`;
+
+                const existing = cart.find(i => i.id === id && i.weight === weight);
+                if (existing) existing.qty++;
+                else cart.push({id, name:p.name, weight, label, price, qty:1});
+
+                refreshCart();
             });
+        });
+
+        function remove(i) { cart.splice(i,1); refreshCart(); }
+
+        function refreshCart() {
+            const count = cart.reduce((s,i)=>s+i.qty,0);
+            document.getElementById('cart-count').textContent = count;
+            document.getElementById('floating-cart-count').textContent = count;
+
+            const list = document.getElementById('cart-items');
+            const totalEl = document.getElementById('cart-total');
+            if (!cart.length) {
+                list.innerHTML = '<p class="text-muted">Your cart is empty.</p>';
+                totalEl.textContent = '0';
+            } else {
+                let html = '<ul class="list-group list-group-flush">', total = 0;
+                cart.forEach((item, i) => {
+                    const sub = item.price * item.qty;
+                    total += sub;
+                    html += `<li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span>${item.name} - ${item.label} × ${item.qty}</span>
+                        <div><span class="me-3">₹${sub}</span>
+                        <button class="btn btn-sm btn-outline-danger" onclick="remove(${i})"><i class="fas fa-trash"></i></button></div>
+                    </li>`;
+                });
+                html += '</ul>';
+                list.innerHTML = html;
+                totalEl.textContent = total.toFixed(2);
+            }
+            document.getElementById('whatsapp-order').classList.toggle('disabled', !(document.getElementById('customer-form').checkValidity() && cart.length));
         }
 
-        // ... (rest of functions: updatePrice, getSelectedWeight, addToCart, removeItem, updateCartDisplay, checkFormValidity, event listeners, whatsapp-order)
+        document.getElementById('whatsapp-order').onclick = () => {
+            if (!cart.length) return alert('Cart is empty');
+            if (!document.getElementById('customer-form').checkValidity()) return document.getElementById('customer-form').reportValidity();
 
-        function updatePrice(id) {
-            const product = products.find(p => p.id === id);
-            const select = document.getElementById(`weight-select-${id}`);
-            const customInput = document.getElementById(`custom-weight-${id}`);
-            let weight = select.value === 'custom' ? parseFloat(customInput.value) || 1 : parseFloat(select.value);
-            if (weight <= 0) weight = 1;
-            const price = Math.round(product.pricePerKg * weight * 100) / 100;
-            const weightLabel = weight === 0.25 ? '250gm' : weight === 0.5 ? '500gm' : weight === 1 ? '1kg' : `${weight * 1000}gm`;
-            document.getElementById(`price-display-${id}`).textContent = `₹${price} for ${weightLabel}`;
-        }
+            const f = id => document.getElementById(id).value.trim();
+            const name = f('customer-name'), phone = '+91'+f('customer-phone'),
+                  addr = `${f('customer-place')}, ${f('customer-road')}, ${f('customer-town')} - ${f('customer-pin')}`;
 
-        // (All other functions same as before)
+            let msg = "Good day! Ocean-fresh order:\n\nCustomer:\nName: ${name}\nMobile: ${phone}\nAddress: ${addr}\n\nOrder:\n";
+            cart.forEach(i => msg += `• ${i.qty} × ${i.label} ${i.name} - ₹${(i.price*i.qty).toFixed(2)}\n`);
+            msg += `\nTotal: ₹${cart.reduce((s,i)=>s+i.price*i.qty,0).toFixed(2)}\n\nThank you!`;
 
-        renderProducts();
-        updateCartDisplay();
+            window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+        };
+
+        document.getElementById('cartModal').addEventListener('shown.bs.modal', refreshCart);
+        document.getElementById('customer-form').addEventListener('input', refreshCart);
+
+        refreshCart();
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-

@@ -90,7 +90,7 @@
     </button>
 
     <script>
-        const WA_NUMBER = "+918139001800"; // ← Replace with your number
+        const WA_NUMBER = "+918139001800"; // ← Replace with your number (e.g., 919876543210)
 
         const products = [
             {id:1,name:"Premium Whole Lobster",pricePerKg:3500,img:"https://shop.legalseafoods.com/cdn/shop/files/LiveLobstersCloseupNov24.jpg?v=1731080140&width=1920"},
@@ -146,10 +146,10 @@
             updatePrice();
         });
 
-        // Fixed: Attach click listeners properly after cards are created
-        document.querySelectorAll('.add-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const id = parseInt(btn.dataset.id);
+        // Add to Cart – now properly attached after DOM is ready
+        document.addEventListener('click', e => {
+            if (e.target.matches('.add-btn')) {
+                const id = parseInt(e.target.dataset.id);
                 const sel = document.getElementById(`sel-${id}`);
                 const cust = document.getElementById(`cust-${id}`);
                 let weight = sel.value === 'custom' ? parseFloat(cust.value) || 1 : parseFloat(sel.value);
@@ -164,15 +164,14 @@
                 else cart.push({id, name:p.name, weight, label, price, qty:1});
 
                 refreshCart();
-            });
+            }
         });
 
         function remove(i) { cart.splice(i,1); refreshCart(); }
 
         function refreshCart() {
             const count = cart.reduce((s,i)=>s+i.qty,0);
-            document.getElementById('cart-count').textContent = count;
-            document.getElementById('floating-cart-count').textContent = count;
+            ['cart-count','floating-cart-count'].forEach(id => document.getElementById(id).textContent = count);
 
             const list = document.getElementById('cart-items');
             const totalEl = document.getElementById('cart-total');
@@ -194,24 +193,44 @@
                 list.innerHTML = html;
                 totalEl.textContent = total.toFixed(2);
             }
-            document.getElementById('whatsapp-order').classList.toggle('disabled', !(document.getElementById('customer-form').checkValidity() && cart.length));
+
+            const form = document.getElementById('customer-form');
+            const btn = document.getElementById('whatsapp-order');
+            const valid = form.checkValidity() && cart.length > 0;
+            btn.classList.toggle('disabled', !valid);
         }
 
-        document.getElementById('whatsapp-order').onclick = () => {
-            if (!cart.length) return alert('Cart is empty');
-            if (!document.getElementById('customer-form').checkValidity()) return document.getElementById('customer-form').reportValidity();
+        // Fixed WhatsApp Order – now reliably reads form values
+        document.getElementById('whatsapp-order').addEventListener('click', () => {
+            if (!cart.length) return alert('Your cart is empty!');
+            const form = document.getElementById('customer-form');
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
 
-            const f = id => document.getElementById(id).value.trim();
-            const name = f('customer-name'), phone = '+91'+f('customer-phone'),
-                  addr = `${f('customer-place')}, ${f('customer-road')}, ${f('customer-town')} - ${f('customer-pin')}`;
+            const get = id => document.getElementById(id).value.trim();
+            const name = get('customer-name');
+            const phone = '+91' + get('customer-phone');
+            const place = get('customer-place');
+            const road = get('customer-road');
+            const town = get('customer-town');
+            const pin = get('customer-pin');
 
-            let msg = "Good day! Ocean-fresh order:\n\nCustomer:\nName: ${name}\nMobile: ${phone}\nAddress: ${addr}\n\nOrder:\n";
-            cart.forEach(i => msg += `• ${i.qty} × ${i.label} ${i.name} - ₹${(i.price*i.qty).toFixed(2)}\n`);
-            msg += `\nTotal: ₹${cart.reduce((s,i)=>s+i.price*i.qty,0).toFixed(2)}\n\nThank you!`;
+            let msg = "Good day! I wish to place an ocean-fresh order:\n\n";
+            msg += "Customer Details:\n";
+            msg += `Name: ${name}\n`;
+            msg += `Mobile: ${phone}\n`;
+            msg += `Address: ${place}, ${road}, ${town} - ${pin}\n\n`;
+            msg += "Order Summary:\n";
+            cart.forEach(i => msg += `• ${i.qty} × ${i.label} ${i.name} - ₹${(i.price * i.qty).toFixed(2)}\n`);
+            msg += `\nTotal Amount: ₹${cart.reduce((s,i)=>s + i.price*i.qty,0).toFixed(2)}\n\n`;
+            msg += "Looking forward to your confirmation and delivery slot. Thank you!";
 
             window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
-        };
+        });
 
+        // Refresh cart when modal opens or form changes
         document.getElementById('cartModal').addEventListener('shown.bs.modal', refreshCart);
         document.getElementById('customer-form').addEventListener('input', refreshCart);
 

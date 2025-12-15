@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elite Coastal Seafood</title>
+    <title>എലൈറ്റ് കോസ്റ്റൽ സീഫുഡ് - പ്രീമിയം സമുദ്ര മത്സ്യങ്ങൾ</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Noto+Sans+Malayalam:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        body { background:#fff; color:#333; font-family:'Montserrat',sans-serif; }
+        body { background:#fff; color:#333; font-family:'Noto Sans Malayalam',sans-serif; }
         h1,h2,h5 { font-family:'Playfair Display',serif; color:#0077be; }
         .hero { position:relative; background:linear-gradient(to bottom,#e0f7fa,#fff); padding:150px 0; overflow:hidden; }
         .hero::before { content:''; position:absolute; inset:0; background:url('https://img.freepik.com/free-vector/elegant-blue-water-wave-with-bubbles-background_1035-31032.jpg') center/cover; opacity:0.3; z-index:0; }
@@ -34,9 +34,9 @@
 
     <section class="hero text-center">
         <div class="container hero-content">
-            <h1 class="display-3 fw-bold">Elite Coastal Seafood</h1>
-            <p class="lead">Pristine Ocean-Fresh Premium Seafood • Sourced Daily • Delivered with Care</p>
-            <a href="#products" class="btn ocean-btn btn-lg">Explore Ocean Treasures</a>
+            <h1 class="display-3 fw-bold">എലൈറ്റ് കോസ്റ്റൽ സീഫുഡ്</h1>
+            <p class="lead">പ്രീമിയം സമുദ്ര മത്സ്യങ്ങൾ • ദിവസേന പുതിയത് • സ്നേഹപൂർവം ഡെലിവറി</p>
+            <a href="#products" class="btn ocean-btn btn-lg">സമുദ്ര നിധികൾ കാണുക</a>
         </div>
         <div class="waves-container">
             <div class="wave"></div>
@@ -47,7 +47,7 @@
 
     <section id="products" class="py-5 bg-light">
         <div class="container">
-            <h2 class="text-center mb-5">Today's Ocean-Fresh Selection</h2>
+            <h2 class="text-center mb-5">ഇന്നത്തെ പുതിയ വരവുകൾ</h2>
             <div class="row" id="product-grid"></div>
         </div>
     </section>
@@ -56,28 +56,32 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content shadow">
                 <div class="modal-header border-0">
-                    <h5 class="modal-title" style="color:#0077be">Your Ocean Cart <span class="badge bg-primary" id="cart-count">0</span></h5>
+                    <h5 class="modal-title" style="color:#0077be">നിങ്ങളുടെ കാർട്ട് <span class="badge bg-primary" id="cart-count">0</span></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <div id="cart-items"><p class="text-muted">Your cart is empty.</p></div>
+                    <div id="cart-items"><p class="text-muted">നിങ്ങളുടെ കാർട്ട് ശൂന്യമാണ്.</p></div>
                     <hr style="border-color:#e0f7fa">
-                    <h5 style="color:#0077be">Delivery Details</h5>
+                    <h5 style="color:#0077be">ഡെലിവറി വിശദാംശങ്ങൾ</h5>
                     <form id="customer-form" class="row g-3">
-                        <div class="col-12"><label>Full Name *</label><input type="text" class="form-control" id="customer-name" required></div>
-                        <div class="col-12"><label>Mobile Number *</label>
+                        <div class="col-12"><label>പൂർണ്ണ നാമം *</label><input type="text" class="form-control" id="customer-name" required></div>
+                        <div class="col-12"><label>മൊബൈൽ നമ്പർ *</label>
                             <div class="input-group"><span class="input-group-text">+91</span><input type="tel" class="form-control" id="customer-phone" maxlength="10" pattern="[0-9]{10}" required></div>
                         </div>
-                        <div class="col-12"><label>Place / Landmark *</label><input type="text" class="form-control" id="customer-place" required></div>
-                        <div class="col-12"><label>Road / Street *</label><input type="text" class="form-control" id="customer-road" required></div>
-                        <div class="col-12"><label>Town / City *</label><input type="text" class="form-control" id="customer-town" required></div>
-                        <div class="col-12"><label>Pin Code *</label><input type="text" class="form-control" id="customer-pin" maxlength="6" pattern="[0-9]{6}" required></div>
+                        <div class="col-12"><label>സ്ഥലം / ലാൻഡ്മാർക്ക് *</label><input type="text" class="form-control" id="customer-place" required></div>
+                        <div class="col-12"><label>റോഡ് / തെരുവ് *</label><input type="text" class="form-control" id="customer-road" required></div>
+                        <div class="col-12"><label>പട്ടണം / നഗരം *</label><input type="text" class="form-control" id="customer-town" required></div>
+                        <div class="col-12"><label>പിൻ കോഡ് *</label><input type="text" class="form-control" id="customer-pin" maxlength="6" pattern="[0-9]{6}" required></div>
+                        <div class="col-12">
+                            <label>ഇഷ്ടപ്പെട്ട ഡെലിവറി സമയം *</label>
+                            <select class="form-select" id="delivery-slot" required></select>
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer border-0 flex-column">
-                    <h5>Total: ₹<span id="cart-total">0</span></h5>
+                    <h5>ആകെ തുക: ₹<span id="cart-total">0</span></h5>
                     <button class="btn whatsapp-btn btn-lg w-100 mt-3 disabled" id="whatsapp-order">
-                        <i class="fab fa-whatsapp"></i> Complete Order on WhatsApp
+                        <i class="fab fa-whatsapp"></i> വാട്സാപ്പിൽ ഓർഡർ പൂർത്തിയാക്കുക
                     </button>
                 </div>
             </div>
@@ -90,21 +94,57 @@
     </button>
 
     <script>
-        const WA_NUMBER = "+918139001800"; // ← Replace with your number (e.g., 919876543210)
+        const WA_NUMBER = "+918139001800"; // ← നിങ്ങളുടെ നമ്പർ ഇവിടെ മാറ്റുക
 
         const products = [
-            {id:1,name:"Premium Whole Lobster",pricePerKg:3500,img:"https://shop.legalseafoods.com/cdn/shop/files/LiveLobstersCloseupNov24.jpg?v=1731080140&width=1920"},
-            {id:2,name:"Fresh Oysters",pricePerKg:5000,img:"https://thumbs.dreamstime.com/b/fresh-oysters-ice-lemon-wedges-premium-seafood-delicacy-served-raw-fine-dining-gourmet-restaurant-experience-405945557.jpg"},
-            {id:3,name:"King Prawns Jumbo",pricePerKg:1800,img:"https://www.citarella.com/media/catalog/product/cache/6bd6bc90948058f1c179c773d53c57be/image/154b83a/jumbo-shrimp.jpg"},
-            {id:4,name:"Black Caviar",pricePerKg:150000,img:"https://caviar.ca/wp-content/uploads/2023/06/CAVIAR.webp"},
-            {id:5,name:"Wild Seer Fish Steak",pricePerKg:1200,img:"https://maplesfood.com/wp-content/uploads/2020/11/GADRE-SEER-2.jpg"},
-            {id:6,name:"Blue Crab (Live)",pricePerKg:900,img:"https://cdn.shopify.com/s/files/1/1366/4785/files/CD_1280_e_Rusty_Crabs_MBCE_21623_edited_933a5f8f-0f84-41e2-b9ae-b8fcb0599b40.jpg?v=1761306733"}
+            {id:1,name:"പ്രീമിയം ലോബ്സ്റ്റർ",pricePerKg:3500,img:"https://shop.legalseafoods.com/cdn/shop/files/LiveLobstersCloseupNov24.jpg?v=1731080140&width=1920"},
+            {id:2,name:"പുതിയ ഓയ്സ്റ്റേഴ്സ്",pricePerKg:5000,img:"https://thumbs.dreamstime.com/b/fresh-oysters-ice-lemon-wedges-premium-seafood-delicacy-served-raw-fine-dining-gourmet-restaurant-experience-405945557.jpg"},
+            {id:3,name:"ജംബോ കിംഗ് പ്രോൺസ്",pricePerKg:1800,img:"https://www.citarella.com/media/catalog/product/cache/6bd6bc90948058f1c179c773d53c57be/image/154b83a/jumbo-shrimp.jpg"},
+            {id:4,name:"ബ്ലാക്ക് കാവിയാർ",pricePerKg:150000,img:"https://caviar.ca/wp-content/uploads/2023/06/CAVIAR.webp"},
+            {id:5,name:"വൈൽഡ് സീർ ഫിഷ് സ്റ്റീക്ക്",pricePerKg:1200,img:"https://maplesfood.com/wp-content/uploads/2020/11/GADRE-SEER-2.jpg"},
+            {id:6,name:"ബ്ലൂ ക്രാബ് (ജീവനോടെ)",pricePerKg:900,img:"https://cdn.shopify.com/s/files/1/1366/4785/files/CD_1280_e_Rusty_Crabs_MBCE_21623_edited_933a5f8f-0f84-41e2-b9ae-b8fcb0599b40.jpg?v=1761306733"}
         ];
 
         let cart = [];
 
-        const grid = document.getElementById('product-grid');
+        function generateDeliverySlots() {
+            const slotSelect = document.getElementById('delivery-slot');
+            slotSelect.innerHTML = '<option value="" disabled selected>ഡെലിവറി സ്ലോട്ട് തിരഞ്ഞെടുക്കുക</option>';
 
+            const now = new Date();
+            const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+            const tomorrow = new Date(today); tomorrow.setDate(tomorrow.getDate() + 1);
+            const dayAfter = new Date(today); dayAfter.setDate(dayAfter.getDate() + 2);
+
+            const formatDate = d => d.toLocaleDateString('ml-IN', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+            const slots = [
+                {label: "രാവിലെ (8 AM - 12 PM)", start: 8},
+                {label: "ഉച്ചതിരിഞ്ഞ് (12 PM - 4 PM)", start: 12},
+                {label: "വൈകുന്നേരം (4 PM - 8 PM)", start: 16}
+            ];
+
+            const todayLabel = `ഇന്ന് - ${formatDate(today)}`;
+            slots.forEach(s => {
+                if (now.getHours() < s.start) {
+                    slotSelect.innerHTML += `<option value="${todayLabel}: ${s.label}">${todayLabel}: ${s.label}</option>`;
+                }
+            });
+            if (now.getHours() < 18) {
+                slotSelect.innerHTML += `<option value="${todayLabel}: ഇന്ന് ഏത് സമയവും">ഇന്ന് ഏത് സമയവും</option>`;
+            }
+
+            ['നാളെ', 'മറ്റന്നാൾ'].forEach((label, i) => {
+                const date = i === 0 ? tomorrow : dayAfter;
+                const dateLabel = `${label} - ${formatDate(date)}`;
+                slots.forEach(s => {
+                    slotSelect.innerHTML += `<option value="${dateLabel}: ${s.label}">${dateLabel}: ${s.label}</option>`;
+                });
+                slotSelect.innerHTML += `<option value="${dateLabel}: ഏത് സമയവും">ഏത് സമയവും (${label})</option>`;
+            });
+        }
+
+        const grid = document.getElementById('product-grid');
         products.forEach(p => {
             const card = document.createElement('div');
             card.className = 'col-md-4 mb-5';
@@ -113,16 +153,16 @@
                     <img src="${p.img}" class="card-img-top" alt="${p.name}" onerror="this.src='https://via.placeholder.com/600x400?text=No+Image'">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">${p.name}</h5>
-                        <p class="text-muted">₹${p.pricePerKg} per kg</p>
+                        <p class="text-muted">₹${p.pricePerKg} / കിലോ</p>
                         <select class="form-select mb-2" id="sel-${p.id}">
-                            <option value="0.25">250gm</option>
-                            <option value="0.5">500gm</option>
-                            <option value="1" selected>1kg</option>
-                            <option value="custom">Custom</option>
+                            <option value="0.25">250 ഗ്രാം</option>
+                            <option value="0.5">500 ഗ്രാം</option>
+                            <option value="1" selected>1 കിലോ</option>
+                            <option value="custom">ഇഷ്ടാനുസരണം</option>
                         </select>
-                        <input type="number" class="form-control d-none mb-2" id="cust-${p.id}" min="0.1" step="0.05" placeholder="e.g. 0.75">
-                        <p class="price-display" id="price-${p.id}">₹${p.pricePerKg} for 1kg</p>
-                        <button class="btn ocean-btn mt-auto add-btn" data-id="${p.id}">Add to Cart</button>
+                        <input type="number" class="form-control d-none mb-2" id="cust-${p.id}" min="0.1" step="0.05" placeholder="ഉദാ: 0.75">
+                        <p class="price-display" id="price-${p.id}">₹${p.pricePerKg} (1 കിലോ)</p>
+                        <button class="btn ocean-btn mt-auto add-btn" data-id="${p.id}">കാർട്ടിലേക്ക് ചേർക്കുക</button>
                     </div>
                 </div>`;
             grid.appendChild(card);
@@ -134,8 +174,8 @@
             const updatePrice = () => {
                 let w = sel.value === 'custom' ? (parseFloat(cust.value) || 1) : parseFloat(sel.value);
                 const price = Math.round(p.pricePerKg * w * 100) / 100;
-                const label = w===0.25?'250gm':w===0.5?'500gm':w===1?'1kg':`${(w*1000).toFixed(0)}gm`;
-                priceEl.textContent = `₹${price} for ${label}`;
+                const label = w===0.25?'250 ഗ്രാം':w===0.5?'500 ഗ്രാം':w===1?'1 കിലോ':`${(w*1000).toFixed(0)} ഗ്രാം`;
+                priceEl.textContent = `₹${price} (${label})`;
             };
 
             sel.onchange = () => {
@@ -146,18 +186,17 @@
             updatePrice();
         });
 
-        // Add to Cart – now properly attached after DOM is ready
         document.addEventListener('click', e => {
             if (e.target.matches('.add-btn')) {
                 const id = parseInt(e.target.dataset.id);
                 const sel = document.getElementById(`sel-${id}`);
                 const cust = document.getElementById(`cust-${id}`);
                 let weight = sel.value === 'custom' ? parseFloat(cust.value) || 1 : parseFloat(sel.value);
-                if (weight <= 0) return alert('Please select a valid quantity');
+                if (weight <= 0) return alert('ദയവായി സാധുവായ അളവ് തിരഞ്ഞെടുക്കുക');
 
                 const p = products.find(x => x.id === id);
                 const price = Math.round(p.pricePerKg * weight * 100) / 100;
-                const label = weight===0.25?'250gm':weight===0.5?'500gm':weight===1?'1kg':`${(weight*1000).toFixed(0)}gm`;
+                const label = weight===0.25?'250 ഗ്രാം':weight===0.5?'500 ഗ്രാം':weight===1?'1 കിലോ':`${(weight*1000).toFixed(0)} ഗ്രാം`;
 
                 const existing = cart.find(i => i.id === id && i.weight === weight);
                 if (existing) existing.qty++;
@@ -176,7 +215,7 @@
             const list = document.getElementById('cart-items');
             const totalEl = document.getElementById('cart-total');
             if (!cart.length) {
-                list.innerHTML = '<p class="text-muted">Your cart is empty.</p>';
+                list.innerHTML = '<p class="text-muted">നിങ്ങളുടെ കാർട്ട് ശൂന്യമാണ്.</p>';
                 totalEl.textContent = '0';
             } else {
                 let html = '<ul class="list-group list-group-flush">', total = 0;
@@ -200,9 +239,8 @@
             btn.classList.toggle('disabled', !valid);
         }
 
-        // Fixed WhatsApp Order – now reliably reads form values
         document.getElementById('whatsapp-order').addEventListener('click', () => {
-            if (!cart.length) return alert('Your cart is empty!');
+            if (!cart.length) return alert('നിങ്ങളുടെ കാർട്ട് ശൂന്യമാണ്!');
             const form = document.getElementById('customer-form');
             if (!form.checkValidity()) {
                 form.reportValidity();
@@ -216,22 +254,26 @@
             const road = get('customer-road');
             const town = get('customer-town');
             const pin = get('customer-pin');
+            const deliverySlot = get('delivery-slot');
 
-            let msg = "Good day! I wish to place an ocean-fresh order:\n\n";
-            msg += "Customer Details:\n";
-            msg += `Name: ${name}\n`;
-            msg += `Mobile: ${phone}\n`;
-            msg += `Address: ${place}, ${road}, ${town} - ${pin}\n\n`;
-            msg += "Order Summary:\n";
+            let msg = "നമസ്കാരം! ഒരു ഓർഡർ നൽകാൻ ആഗ്രഹിക്കുന്നു:\n\n";
+            msg += "ഉപഭോക്തൃ വിശദാംശങ്ങൾ:\n";
+            msg += `പേര്: ${name}\n`;
+            msg += `മൊബൈൽ: ${phone}\n`;
+            msg += `വിലാസം: ${place}, ${road}, ${town} - ${pin}\n`;
+            msg += `ഡെലിവറി സമയം: ${deliverySlot}\n\n`;
+            msg += "ഓർഡർ വിശദാംശങ്ങൾ:\n";
             cart.forEach(i => msg += `• ${i.qty} × ${i.label} ${i.name} - ₹${(i.price * i.qty).toFixed(2)}\n`);
-            msg += `\nTotal Amount: ₹${cart.reduce((s,i)=>s + i.price*i.qty,0).toFixed(2)}\n\n`;
-            msg += "Looking forward to your confirmation and delivery slot. Thank you!";
+            msg += `\nആകെ തുക: ₹${cart.reduce((s,i)=>s + i.price*i.qty,0).toFixed(2)}\n\n`;
+            msg += "സ്ഥിരീകരണത്തിനായി കാത്തിരിക്കുന്നു. നന്ദി!";
 
             window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
         });
 
-        // Refresh cart when modal opens or form changes
-        document.getElementById('cartModal').addEventListener('shown.bs.modal', refreshCart);
+        document.getElementById('cartModal').addEventListener('shown.bs.modal', () => {
+            generateDeliverySlots();
+            refreshCart();
+        });
         document.getElementById('customer-form').addEventListener('input', refreshCart);
 
         refreshCart();

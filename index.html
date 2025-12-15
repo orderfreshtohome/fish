@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fresh Coastal Fish Market - Daily Fresh Seafood</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body { background-color: #f8f9fa; }
+        .hero { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://media.istockphoto.com/id/470981381/photo/fresh-seafood.jpg?s=612x612'); background-size: cover; color: white; padding: 100px 0; }
+        .product-card { transition: transform 0.3s; }
+        .product-card:hover { transform: scale(1.05); }
+        .cart-badge { position: relative; top: -10px; right: 10px; }
+        .whatsapp-btn { background-color: #25D366; color: white; }
+        .whatsapp-btn:hover { background-color: #128C7E; }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Hero -->
+    <section class="hero text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Fresh Coastal Fish Market</h1>
+            <p class="lead">Daily fresh catch delivered to your door • Same-day delivery available</p>
+            <a href="#products" class="btn btn-primary btn-lg">Browse Fresh Seafood</a>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Today's Fresh Arrivals</h2>
+            <div class="row" id="product-grid">
+                <!-- Products will be added here by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div class="modal fade" id="cartModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Your Cart <span class="badge bg-primary" id="cart-count">0</span></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="cart-items">
+                    <p>Your cart is empty.</p>
+                </div>
+                <div class="modal-footer">
+                    <h5>Total: ₹<span id="cart-total">0</span></h5>
+                    <button class="btn whatsapp-btn btn-lg" id="whatsapp-order"><i class="fab fa-whatsapp"></i> Order on WhatsApp</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Cart Button -->
+    <button class="btn btn-primary position-fixed bottom-0 end-0 m-4 rounded-circle p-3 shadow" style="z-index: 1000;" data-bs-toggle="modal" data-bs-target="#cartModal">
+        <i class="fas fa-shopping-cart fa-2x"></i>
+        <span class="badge bg-danger cart-badge" id="floating-cart-count">0</span>
+    </button>
+
+    <script>
+        // Replace with your WhatsApp number (country code without +)
+        const WHATSAPP_NUMBER = "+918139001800";
+
+        const products = [
+            { id: 1, name: "Pomfret (Whole)", price: 800, unit: "kg", img: "https://media.istockphoto.com/id/523623518/photo/fresh-seafood-on-ice-at-the-fish-market.jpg?s=612x612" },
+            { id: 2, name: "King Prawns", price: 1200, unit: "kg", img: "https://media.istockphoto.com/id/520490716/photo/seafood-on-ice.jpg?s=612x612" },
+            { id: 3, name: "Crab (Live)", price: 600, unit: "kg", img: "https://media.istockphoto.com/id/1446601469/photo/high-angle-view-of-various-fresh-fish-and-seafood-decorated-with-ice-cubes-lemon-slices-herbs.jpg?s=612x612" },
+            { id: 4, name: "Squid", price: 400, unit: "kg", img: "https://cdn.shopify.com/s/files/1/0287/2662/4338/files/poissons-900x600.jpg?v=1600883610" },
+            { id: 5, name: "Seer Fish", price: 700, unit: "kg", img: "https://www.netcostmarket.com/wp-content/uploads/2021/10/Fish-4-1024x683.jpg" },
+            { id: 6, name: "Lobster", price: 2500, unit: "kg", img: "https://static-content.owner.com/funnel/images/fd23e8c5-9470-426e-9614-2624bab1c232?v=0789374208" }
+        ];
+
+        let cart = [];
+
+        function renderProducts() {
+            const grid = document.getElementById('product-grid');
+            products.forEach(p => {
+                const col = document.createElement('div');
+                col.className = 'col-md-4 mb-4';
+                col.innerHTML = `
+                    <div class="card product-card h-100">
+                        <img src="${p.img}" class="card-img-top" alt="${p.name}" style="height: 250px; object-fit: cover;">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">${p.name}</h5>
+                            <p class="card-text mt-auto">₹${p.price}/${p.unit}</p>
+                            <button class="btn btn-primary mt-2" onclick="addToCart(${p.id})">Add to Cart</button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(col);
+            });
+        }
+
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            const existing = cart.find(item => item.id === id);
+            if (existing) existing.qty++;
+            else cart.push({ ...product, qty: 1 });
+            updateCart();
+        }
+
+        function updateCart() {
+            const count = cart.reduce((sum, item) => sum + item.qty, 0);
+            document.getElementById('cart-count').textContent = count;
+            document.getElementById('floating-cart-count').textContent = count;
+
+            const itemsDiv = document.getElementById('cart-items');
+            const totalSpan = document.getElementById('cart-total');
+            if (cart.length === 0) {
+                itemsDiv.innerHTML = '<p>Your cart is empty.</p>';
+                totalSpan.textContent = '0';
+                return;
+            }
+
+            let html = '<ul class="list-group">';
+            let total = 0;
+            cart.forEach(item => {
+                const subtotal = item.price * item.qty;
+                total += subtotal;
+                html += `<li class="list-group-item d-flex justify-content-between">
+                    <span>${item.name} x ${item.qty}</span>
+                    <span>₹${subtotal}</span>
+                </li>`;
+            });
+            html += '</ul>';
+            itemsDiv.innerHTML = html;
+            totalSpan.textContent = total;
+        }
+
+        document.getElementById('whatsapp-order').addEventListener('click', () => {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            let message = "Hello! I'd like to place an order:\n\n";
+            cart.forEach(item => {
+                message += `${item.qty} ${item.unit} ${item.name} - ₹${item.price * item.qty}\n`;
+            });
+            message += `\nTotal: ₹${cart.reduce((sum, i) => sum + i.price * i.qty, 0)}\n\n`;
+            message += "Please provide your name, address, and preferred delivery time.";
+            const encoded = encodeURIComponent(message);
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`, '_blank');
+        });
+
+        renderProducts();
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
